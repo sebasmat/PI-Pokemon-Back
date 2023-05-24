@@ -71,9 +71,8 @@ const filter = async (users) => {
     let promises = [];
     let pokemon = [];
     users.forEach((obj) => {
-        let query = fetch(obj.url)
-            .then(response => response.json())
-            .then((data) => data);
+        let query = axios.get(obj.url)
+            .then((response) => response.data);
         promises.push(query);
     });
     await Promise.all(promises)
