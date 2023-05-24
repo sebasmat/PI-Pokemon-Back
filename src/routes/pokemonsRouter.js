@@ -10,7 +10,7 @@ pokemonsRouter.get("/", async (req, res) => {
         const users = name ? await getPokemons(name) : await getPokemons();
         res.status(200).json(users);
     } catch (error) {
-        res.status(404).json({ error: "El pokemon no existe" });
+        res.status(404).json({ error: error.message });
     }
 });
 
